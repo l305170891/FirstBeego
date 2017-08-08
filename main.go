@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "FirstBee/routers"
+	_ "FirstBeego/routers"
 	"github.com/astaxie/beego"
 )
 

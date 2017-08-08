@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"FirstBee/controllers"
+	"FirstBeego/controllers"
 	"github.com/astaxie/beego"
 )
 
