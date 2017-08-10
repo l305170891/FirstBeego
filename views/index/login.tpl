@@ -4,7 +4,6 @@
 <head>
     <title>login</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="_xsrf" content="{{.xsrf_token}}" />
 
     <script src="/static/js/jquery-2.1.4.min.js"></script>
     <script src="/static/js/sha1.js"></script>
@@ -12,7 +11,7 @@
 
 <body>
 <header>
-    <h1 class="logo">管理系统</h1>
+    <h1 class="logo">客户关系管理系统</h1>
 </header>
 
 <div class="author">
@@ -55,10 +54,10 @@
                     datatype: "json",
                     data: params,
                     success: function (data) {
-                        if(data.code == 0){
-                            location.href = data.data
+                        if(data.Code == 0){
+                            location.href = data.Data
                         }else{
-                            alert(data.msg);
+                            alert(data.Msg);
                         }
 
                     }

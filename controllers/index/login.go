@@ -3,6 +3,8 @@ package index
 import (
     "github.com/astaxie/beego"
     "FirstBeego/models/common"
+    "crypto/sha1"
+    "encoding/hex"
 )
 
 type LoginController struct {
@@ -10,7 +12,6 @@ type LoginController struct {
 }
 
 func (c *LoginController) Get() {
-    c.Data["xsrf_token"] = c.XSRFToken()
     c.TplName = "index/login.tpl"
 }
 
@@ -19,7 +20,13 @@ func (c *LoginController) Post()  {
     password:=c.GetString("password")
     ret:=common.AjaxReturn{}
 
-    if username == "admin" && password=="123456"{
+
+    //sha1加密
+    r := sha1.Sum([]byte("123456"))
+    pwd := hex.EncodeToString(r[:])
+
+
+    if username == "admin" && password==pwd{
         c.SetSession("username", username)
 
         ret.Code = 0

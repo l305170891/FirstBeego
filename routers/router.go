@@ -1,14 +1,13 @@
 package routers
 
 import (
-	"FirstBeego/controllers"
 	"FirstBeego/controllers/index"
 	"github.com/astaxie/beego"
 )
 
 func init() {
-	//test
-    beego.Router("/", &controllers.MainController{}, "get:Index")
+	//default
+    beego.Router("/", &index.DefaultController{})
 
 	//login
 	beego.Router("/login", &index.LoginController{})

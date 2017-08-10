@@ -1,2 +1,4 @@
 # FirstBeego
-study beego 
+study beego
+
+:8080
