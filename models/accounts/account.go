@@ -24,3 +24,13 @@ type Account struct {
 func init()  {
     orm.RegisterModel(new(Account))
 }
+
+func (this *Account) GetAccountBy(act string) (Account , error ){
+    o := this.GetOrm()
+
+    var account Account
+    sql := "select * from account where account=?"
+    err := o.Raw(sql, act).QueryRow(&account)
+
+    return account, err
+}

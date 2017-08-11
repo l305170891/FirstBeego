@@ -26,6 +26,10 @@ func (this *BaseController) Prepare() {
 	this.ControllerName = controllerName
 	this.ActionName = actionName
 
+	//data
+	this.Data["username"] = this.GetSession("username")
+	this.Data["account"] = this.GetSession("account")
+
 	beego.Informational(this.Ctx.Request.RemoteAddr, this.Ctx.Request.RequestURI, this.Ctx.Request.Form)
 
 }

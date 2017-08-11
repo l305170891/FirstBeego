@@ -1,9 +1,10 @@
 package index
 
 import (
-    "crypto/sha1"
-    "encoding/hex"
+
     "FirstBeego/controllers"
+    "FirstBeego/models/accounts"
+    "fmt"
 )
 
 type LoginController struct {
@@ -15,17 +16,21 @@ func (c *LoginController) Get() {
 }
 
 func (c *LoginController) Post()  {
-    username:=c.GetString("username")
+    accountName:=c.GetString("account")
     password:=c.GetString("password")
 
     //sha1加密
+    mAccount := accounts.Account{}
+    account, err := mAccount.GetAccountBy(accountName)
+    if err!=nil {
+        fmt.Println(err)
+    }
 
-    r := sha1.Sum([]byte("123456"))
-    pwd := hex.EncodeToString(r[:])
+    //判断密码是否正确
+    if accountName == account.Account && password==account.Password{
+        c.SetSession("username", account.Username)
+        c.SetSession("account", account.Account)
 
-
-    if username == "admin" && password==pwd{
-        c.SetSession("username", username)
         c.JsonResult(0, "登陆成功", "/home")
     }else{
         c.JsonResult(-1, "账号或密码错误", "/login")

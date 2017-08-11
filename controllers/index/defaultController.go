@@ -10,9 +10,7 @@ type DefaultController struct {
 
 func (c *DefaultController) Get() {
 
-    login := c.CheckLogin()
-
-    if login{
+    if c.CheckLogin(){
         c.RedirectLoginPage()
     }else{
         c.RedirectDefaultPage()

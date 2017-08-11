@@ -18,7 +18,7 @@
     <div id="form">
 
         username:
-        <input name="username" type="text" value="admin"/>
+        <input name="account" type="text" value="admin"/>
 
         <br/><br/>
 
@@ -33,16 +33,16 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#submit").click(function () {
-                var username = $("#form").find("input[name=username]").val();
+                var account = $("#form").find("input[name=account]").val();
                 var password = $("#form").find("input[name=password]").val();
 
-                if(username == "" || password=="" ){
+                if(account == "" || password=="" ){
                     alert("账号和密码不能为空");
                     return false;
                 }
 
                 var params = {
-                    username: username,
+                    account: account,
                     password: sha1(password)
                 };
 

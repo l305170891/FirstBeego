@@ -6,9 +6,6 @@ import (
     _ "github.com/go-sql-driver/mysql"
 )
 
-var (
-    o orm.Ormer
-)
 
 func init() {
     beego.Info("init orm start...")
@@ -21,8 +18,6 @@ func init() {
     if beego.AppConfig.String("runmode") == "dev" {
         orm.Debug = true
     }
-
-    o = orm.NewOrm()
 
     beego.Info("init orm end.")
 }
