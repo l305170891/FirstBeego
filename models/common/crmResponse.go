@@ -1,6 +1,6 @@
 package common
 
-type AjaxReturn struct {
+type CrmResponse struct {
     Code int
     Data interface{}
     Msg string

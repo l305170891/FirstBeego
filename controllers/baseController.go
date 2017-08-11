@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"FirstBeego/models/accounts"
+	"FirstBeego/models/common"
 )
 
 const (
@@ -11,9 +11,8 @@ const (
 
 type BaseController struct {
 	beego.Controller
-	account *accounts.Account
-	controllerName string          // 控制器名
-	actionName     string          // 动作名
+	ControllerName string          // 控制器名
+	ActionName     string          // 动作名
 }
 
 /*
@@ -24,17 +23,11 @@ func (this *BaseController) Prepare() {
 
 	//获取请求方法名称
 	controllerName, actionName := this.GetControllerAndAction()
-	this.controllerName = controllerName
-	this.actionName = actionName
+	this.ControllerName = controllerName
+	this.ActionName = actionName
 
-}
+	beego.Informational(this.Ctx.Request.RemoteAddr, this.Ctx.Request.RequestURI, this.Ctx.Request.Form)
 
-/**
-重定向
-*/
-func (this *BaseController) redirect(url string) {
-	this.Redirect(url, 302)
-	this.StopRun()
 }
 
 /*
@@ -48,8 +41,39 @@ func (this *BaseController) show(url string) {
 /**
 把需要返回的结构序列化成json 输出
 */
-func (this *BaseController) jsonResult(result interface{}) {
-	this.Data["json"] = result
+func (this *BaseController) JsonResult(code int, msg string, data interface{}) {
+
+	response:=common.CrmResponse{}
+	response.Code = code
+	response.Msg = msg
+	response.Data = data
+
+	this.Data["json"] = &response
 	this.ServeJSON()
-	this.StopRun()
 }
+
+
+func (this *BaseController) CheckLogin() bool {
+
+	login := false
+	username := this.GetSession("username")
+	//如果 username != nil 说明已经登录
+	if username !=nil {
+		login = true
+	}
+
+	if login{
+		return true
+	}else{
+		return false
+	}
+}
+
+func (this *BaseController) RedirectLoginPage(){
+	this.Redirect("/login", 302)
+}
+
+func (this *BaseController) RedirectDefaultPage(){
+	this.Redirect("/home", 302)
+}
+

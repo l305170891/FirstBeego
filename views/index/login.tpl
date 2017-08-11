@@ -27,7 +27,7 @@
 
         <br/><br/>
 
-        <button id="submit">登陆</button>
+        <button id="submit">登录</button>
     </div>
 
     <script type="text/javascript">

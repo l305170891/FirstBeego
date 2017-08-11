@@ -1,11 +1,11 @@
 package index
 
 import (
-    "github.com/astaxie/beego"
+    "FirstBeego/controllers"
 )
 
 type HomeController struct {
-    beego.Controller
+    controllers.BaseController
 }
 
 func (c *HomeController) Get() {

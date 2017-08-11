@@ -1,7 +1,7 @@
 package common
 
 type BaseModel struct {
-    Uuid string
+    Uuid string `orm:"pk"`
     CreateDate int
     UpdateDate int
     Enable int

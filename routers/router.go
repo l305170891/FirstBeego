@@ -9,8 +9,9 @@ func init() {
 	//default
     beego.Router("/", &index.DefaultController{})
 
-	//login
+	//login logout
 	beego.Router("/login", &index.LoginController{})
+	beego.Router("/logout", &index.LoginController{}, "*:Logout")
 
 	//home
 	beego.Router("/home", &index.HomeController{})
