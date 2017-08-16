@@ -35,15 +35,96 @@ CREATE TABLE IF NOT EXISTS `account` (
   `theme` int(11) NOT NULL DEFAULT '0',
   `lastLoginDate` int(11) NOT NULL DEFAULT '0',
   `lastLoginIp` varchar(36) NOT NULL DEFAULT '' COMMENT '上次登录的地址',
+  `create_date` int(11) NOT NULL DEFAULT '0',
+  `update_date` int(11) NOT NULL DEFAULT '0',
+  `group_id` varchar(255) NOT NULL DEFAULT '',
+  `employee_code` varchar(255) NOT NULL DEFAULT '',
+  `avatar_url` varchar(255) NOT NULL DEFAULT '',
+  `last_login_date` int(11) NOT NULL DEFAULT '0',
+  `last_login_ip` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 
--- 正在导出表  gocrm.account 的数据：~0 rows (大约)
+-- 正在导出表  gocrm.account 的数据：~1 rows (大约)
 DELETE FROM `account`;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` (`uuid`, `createDate`, `updateDate`, `enable`, `account`, `password`, `salt`, `username`, `gender`, `groupId`, `employeeCode`, `phone`, `avatarUrl`, `theme`, `lastLoginDate`, `lastLoginIp`) VALUES
-	('031cb457-7e5b-11e7-aaed-1040f3a04c85', 0, 0, 1, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '', '系统管理员', 0, '', '', '', '', 0, 0, '');
+INSERT INTO `account` (`uuid`, `createDate`, `updateDate`, `enable`, `account`, `password`, `salt`, `username`, `gender`, `groupId`, `employeeCode`, `phone`, `avatarUrl`, `theme`, `lastLoginDate`, `lastLoginIp`, `create_date`, `update_date`, `group_id`, `employee_code`, `avatar_url`, `last_login_date`, `last_login_ip`) VALUES
+	('031cb457-7e5b-11e7-aaed-1040f3a04c85', 0, 0, 1, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '', '系统管理员', 0, '', '', '', '', 0, 0, '', 0, 0, '', '', '', 0, '');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
+
+
+-- 导出  表 gocrm.account_role 结构
+DROP TABLE IF EXISTS `account_role`;
+CREATE TABLE IF NOT EXISTS `account_role` (
+  `uuid` varchar(36) NOT NULL DEFAULT '',
+  `createDate` int(11) NOT NULL DEFAULT '0',
+  `updateDate` int(11) NOT NULL DEFAULT '0',
+  `enable` tinyint(1) NOT NULL DEFAULT '1',
+  `accountId` varchar(36) NOT NULL DEFAULT '',
+  `roleId` varchar(36) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户角色中间表';
+
+-- 正在导出表  gocrm.account_role 的数据：~0 rows (大约)
+DELETE FROM `account_role`;
+/*!40000 ALTER TABLE `account_role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_role` ENABLE KEYS */;
+
+
+-- 导出  表 gocrm.resource 结构
+DROP TABLE IF EXISTS `resource`;
+CREATE TABLE IF NOT EXISTS `resource` (
+  `uuid` varchar(36) NOT NULL DEFAULT '',
+  `createDate` int(11) NOT NULL DEFAULT '0',
+  `updateDate` int(11) NOT NULL DEFAULT '0',
+  `enable` tinyint(1) NOT NULL DEFAULT '1',
+  `serial` int(11) NOT NULL DEFAULT '100',
+  `pid` bigint(11) NOT NULL COMMENT '父节点id',
+  `name` varchar(45) DEFAULT '' COMMENT '资源名称',
+  `resourcePath` varchar(255) NOT NULL COMMENT '资源路径',
+  PRIMARY KEY (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='资源树';
+
+-- 正在导出表  gocrm.resource 的数据：~0 rows (大约)
+DELETE FROM `resource`;
+/*!40000 ALTER TABLE `resource` DISABLE KEYS */;
+/*!40000 ALTER TABLE `resource` ENABLE KEYS */;
+
+
+-- 导出  表 gocrm.role 结构
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE IF NOT EXISTS `role` (
+  `uuid` varchar(36) NOT NULL DEFAULT '',
+  `createDate` int(11) NOT NULL DEFAULT '0',
+  `updateDate` int(11) NOT NULL DEFAULT '0',
+  `enable` tinyint(1) NOT NULL DEFAULT '1',
+  `name` varchar(45) DEFAULT '' COMMENT '名称',
+  `description` varchar(255) NOT NULL COMMENT '描述',
+  PRIMARY KEY (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='角色表';
+
+-- 正在导出表  gocrm.role 的数据：~0 rows (大约)
+DELETE FROM `role`;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+
+
+-- 导出  表 gocrm.role_resource 结构
+DROP TABLE IF EXISTS `role_resource`;
+CREATE TABLE IF NOT EXISTS `role_resource` (
+  `uuid` varchar(36) NOT NULL DEFAULT '',
+  `createDate` int(11) NOT NULL DEFAULT '0',
+  `updateDate` int(11) NOT NULL DEFAULT '0',
+  `enable` tinyint(1) NOT NULL DEFAULT '1',
+  `roleId` varchar(36) NOT NULL DEFAULT '',
+  `resourceId` varchar(36) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='角色资源中间表';
+
+-- 正在导出表  gocrm.role_resource 的数据：~0 rows (大约)
+DELETE FROM `role_resource`;
+/*!40000 ALTER TABLE `role_resource` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role_resource` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
