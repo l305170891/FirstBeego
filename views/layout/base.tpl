@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 
 <html>
-<head>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
     <title>{{template "title" .}}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link src="/static/css/index.css" />
     <style type="text/css">
         #header{
             border-bottom: 1px solid #333;
