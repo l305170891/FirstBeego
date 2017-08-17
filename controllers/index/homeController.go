@@ -9,7 +9,7 @@ type HomeController struct {
 }
 
 func (c *HomeController) Get() {
-    c.TplName = "index/home.tpl"
+    c.Show("index/home.tpl")
 }
 
 

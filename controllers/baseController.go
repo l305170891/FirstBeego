@@ -37,8 +37,8 @@ func (this *BaseController) Prepare() {
 /*
 指定页面，并且返回公共参数
 */
-func (this *BaseController) show(url string) {
-	this.Data["staticUrl"] = beego.AppConfig.String("staticUrl")
+func (this *BaseController) Show(url string) {
+	this.Data["resources"] = this.GetSession("resources")
 	this.TplName = url
 }
 

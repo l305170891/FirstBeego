@@ -13,7 +13,7 @@ func init() {
     dbType := beego.AppConfig.String("db_type")
     dsn := generateDSN()
     orm.RegisterDataBase("default", dbType, dsn)
-    orm.RunSyncdb("default", false, true)
+    //orm.RunSyncdb("default", false, true)
 
     //如果是dev环境，打开sql调试
     if beego.AppConfig.String("runmode") == "dev" {

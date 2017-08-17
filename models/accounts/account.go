@@ -12,20 +12,20 @@ type Account struct {
     Password      string
     Salt          string
     Gender        int
-    GroupId       string
-    EmployeeCode  string
+    GroupId       string `orm:"column(groupId)"`
+    EmployeeCode  string `orm:"column(employeeCode)"`
     Phone         string
-    AvatarUrl     string
+    AvatarUrl     string `orm:"column(avatarUrl)"`
     Theme         int
-    LastLoginDate int
-    LastLoginIp   string
+    LastLoginDate int    `orm:"column(lastLoginDate)"`
+    LastLoginIp   string `orm:"column(lastLoginIp)"`
 }
 
-func init()  {
+func init() {
     orm.RegisterModel(new(Account))
 }
 
-func (this *Account) GetAccountBy(act string) (Account , error ){
+func (this *Account) GetAccountBy(act string) (Account, error) {
     o := this.GetOrm()
 
     var account Account

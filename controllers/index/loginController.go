@@ -30,11 +30,26 @@ func (c *LoginController) Post()  {
     if accountName == account.Account && password==account.Password{
         c.SetSession("username", account.Username)
         c.SetSession("account", account.Account)
+        c.setResource(account.Uuid)
 
         c.JsonResult(0, "登陆成功", "/home")
     }else{
         c.JsonResult(-1, "账号或密码错误", "/login")
     }
+}
+
+//将资源保存到session
+func (c *LoginController) setResource(accountId string)  {
+
+    //获取资源
+    mResource := accounts.Resource{}
+    resources,mun, err :=mResource.GetResourceByAccountId(accountId)
+    if err == nil && mun > 0 {
+        c.SetSession("resources", resources)
+    }else{
+        c.SetSession("resources", []accounts.Resource{})
+    }
+
 }
 
 func (c *LoginController) Logout(){
