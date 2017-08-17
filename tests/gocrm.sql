@@ -49,7 +49,8 @@ CREATE TABLE IF NOT EXISTS `account` (
 DELETE FROM `account`;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 INSERT INTO `account` (`uuid`, `createDate`, `updateDate`, `enable`, `account`, `password`, `salt`, `username`, `gender`, `groupId`, `employeeCode`, `phone`, `avatarUrl`, `theme`, `lastLoginDate`, `lastLoginIp`, `create_date`, `update_date`, `group_id`, `employee_code`, `avatar_url`, `last_login_date`, `last_login_ip`) VALUES
-	('031cb457-7e5b-11e7-aaed-1040f3a04c85', 0, 0, 1, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '', '系统管理员', 0, '', '', '', '', 0, 0, '', 0, 0, '', '', '', 0, '');
+	('031cb457-7e5b-11e7-aaed-1040f3a04c85', 0, 0, 1, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '', '系统管理员', 0, '', '', '', '', 0, 0, '', 0, 0, '', '', '', 0, ''),
+	('12345678-7e5b-11e7-aaed-1040f3a04c85', 0, 0, 1, 'luojian', '7c4a8d09ca3762af61e59520943dc26494f8941b', '', '罗剑', 0, '', '', '', '', 0, 0, '', 0, 0, '', '', '', 0, '');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 
 
@@ -68,6 +69,9 @@ CREATE TABLE IF NOT EXISTS `account_role` (
 -- 正在导出表  gocrm.account_role 的数据：~0 rows (大约)
 DELETE FROM `account_role`;
 /*!40000 ALTER TABLE `account_role` DISABLE KEYS */;
+INSERT INTO `account_role` (`uuid`, `createDate`, `updateDate`, `enable`, `accountId`, `roleId`) VALUES
+	('63e9e53e-830b-11e7-a150-1040f3a04c85', 0, 0, 1, '12345678-7e5b-11e7-aaed-1040f3a04c85', '799d4739-830a-11e7-a150-1040f3a04c85'),
+	('63e9e773-830b-11e7-a150-1040f3a04c85', 0, 0, 1, '031cb457-7e5b-11e7-aaed-1040f3a04c85', '799d4478-830a-11e7-a150-1040f3a04c85');
 /*!40000 ALTER TABLE `account_role` ENABLE KEYS */;
 
 
@@ -88,6 +92,10 @@ CREATE TABLE IF NOT EXISTS `resource` (
 -- 正在导出表  gocrm.resource 的数据：~0 rows (大约)
 DELETE FROM `resource`;
 /*!40000 ALTER TABLE `resource` DISABLE KEYS */;
+INSERT INTO `resource` (`uuid`, `createDate`, `updateDate`, `enable`, `serial`, `pid`, `name`, `resourcePath`, `create_date`, `update_date`, `resource_path`) VALUES
+	('f1f97af3-82fd-11e7-a150-1040f3a04c85', 0, 0, 1, 101, 0, '客户', '/customer', 0, 0, ''),
+	('f1f97b7c-82fd-11e7-a150-1040f3a04c85', 0, 0, 1, 102, 0, '报表', '/report', 0, 0, ''),
+	('f1f97bda-82fd-11e7-a150-1040f3a04c85', 0, 0, 1, 103, 0, '设置', '/setting', 0, 0, '');
 /*!40000 ALTER TABLE `resource` ENABLE KEYS */;
 
 
@@ -106,6 +114,10 @@ CREATE TABLE IF NOT EXISTS `role` (
 -- 正在导出表  gocrm.role 的数据：~0 rows (大约)
 DELETE FROM `role`;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` (`uuid`, `createDate`, `updateDate`, `enable`, `name`, `description`) VALUES
+	('799d4478-830a-11e7-a150-1040f3a04c85', 0, 0, 1, '管理员', '管理员'),
+	('799d4739-830a-11e7-a150-1040f3a04c85', 0, 0, 1, '销售员', '录入客户，查看客户'),
+	('799d47ca-830a-11e7-a150-1040f3a04c85', 0, 0, 1, '分析员', '报表查看');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
 
@@ -124,6 +136,12 @@ CREATE TABLE IF NOT EXISTS `role_resource` (
 -- 正在导出表  gocrm.role_resource 的数据：~0 rows (大约)
 DELETE FROM `role_resource`;
 /*!40000 ALTER TABLE `role_resource` DISABLE KEYS */;
+INSERT INTO `role_resource` (`uuid`, `createDate`, `updateDate`, `enable`, `roleId`, `resourceId`) VALUES
+	('d400feac-830a-11e7-a150-1040f3a04c85', 0, 0, 1, '799d4478-830a-11e7-a150-1040f3a04c85', 'f1f97af3-82fd-11e7-a150-1040f3a04c85'),
+	('d400ff4a-830a-11e7-a150-1040f3a04c85', 0, 0, 1, '799d4478-830a-11e7-a150-1040f3a04c85', 'f1f97b7c-82fd-11e7-a150-1040f3a04c85'),
+	('d400ffa0-830a-11e7-a150-1040f3a04c85', 0, 0, 1, '799d4478-830a-11e7-a150-1040f3a04c85', 'f1f97bda-82fd-11e7-a150-1040f3a04c85'),
+	('f21b57a7-830a-11e7-a150-1040f3a04c85', 0, 0, 1, '799d4739-830a-11e7-a150-1040f3a04c85', 'f1f97af3-82fd-11e7-a150-1040f3a04c85'),
+	('f21b5a68-830a-11e7-a150-1040f3a04c85', 0, 0, 1, '799d47ca-830a-11e7-a150-1040f3a04c85', 'f1f97b7c-82fd-11e7-a150-1040f3a04c85');
 /*!40000 ALTER TABLE `role_resource` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
