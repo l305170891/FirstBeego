@@ -15,6 +15,8 @@ func init() {
 	//login logout
 	beego.Router("/login", &index.LoginController{})
 	beego.Router("/logout", &index.LoginController{}, "*:Logout")
+	beego.Router("/changePwd", &index.HomeController{}, "get:ChangePwd")
+	beego.Router("/postChangePwd", &index.HomeController{}, "post:PostChangePwd")
 
 	//home
 	beego.Router("/home", &index.HomeController{})

@@ -34,3 +34,19 @@ func (this *Account) GetAccountBy(act string) (Account, error) {
 
     return account, err
 }
+
+func (this *Account) UpdatePwd(uuid string, password string) bool {
+    o := this.GetOrm()
+    var account Account
+    account.Uuid = uuid
+
+    if o.Read(&account) == nil {
+        account.Password = password
+        if _, err := o.Update(&account); err == nil {
+            return true
+        }
+    }
+
+    return false
+
+}

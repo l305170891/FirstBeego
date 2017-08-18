@@ -4,7 +4,6 @@ import (
 
     "FirstBeego/controllers"
     "FirstBeego/models/accounts"
-    "fmt"
 )
 
 type LoginController struct {
@@ -23,7 +22,7 @@ func (c *LoginController) Post()  {
     mAccount := accounts.Account{}
     account, err := mAccount.GetAccountBy(accountName)
     if err!=nil {
-        fmt.Println(err)
+        c.JsonResult(-1, "错误", "")
     }
 
     //判断密码是否正确
@@ -34,7 +33,7 @@ func (c *LoginController) Post()  {
 
         c.JsonResult(0, "登陆成功", "/home")
     }else{
-        c.JsonResult(-1, "账号或密码错误", "/login")
+        c.JsonResult(-1, "账号或密码错误", "")
     }
 }
 

@@ -7,38 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <title>{{template "title" .}}</title>
-    <link src="/static/css/index.css" />
-    <style type="text/css">
-        #header{
-            border-bottom: 1px solid #333;
-        }
-        #menu{
-            float: left;
-            width: 200px;
-            min-height: 400px;
 
-        }
-        #menu ul li{
-            list-style: none;
-            line-height: 50px;
-            cursor: pointer;
-            text-align: center;
-        }
-        #menu ul li:hover{
-            background-color: #ddd;
-        }
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css" />
 
-        #main{
-            float: left;
-            min-height: 400px;
-            border-left: 1px solid #333;
-        }
-        #footer{
-            height: 100px;
-            text-align: center;
-        }
-    </style>
     <script src="/static/js/jquery-2.1.4.min.js"></script>
+
 </head>
 
 <body>
