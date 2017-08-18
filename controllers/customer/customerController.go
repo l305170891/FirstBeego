@@ -12,4 +12,8 @@ func (c *CustomerController) Get() {
     c.Show("customer/list.tpl")
 }
 
+func (c *CustomerController) AddCustomer() {
+    c.Show("customer/add.tpl")
+}
+
 

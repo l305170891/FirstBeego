@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>login</title>
+    <title>登陆</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <script src="/static/js/jquery-2.1.4.min.js"></script>

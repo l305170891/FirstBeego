@@ -1,7 +1,7 @@
 {{template "layout/base.tpl" .}}
 
 {{define "title"}}
-home
+修改密码
 {{end}}
 
 {{define "body"}}

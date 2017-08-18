@@ -23,7 +23,7 @@ func init() {
 
 	//customer
 	beego.Router("/customer", &customer.CustomerController{})
-
+	beego.Router("/addCustomer", &customer.CustomerController{}, "get:AddCustomer")
 
 	//report
 	beego.Router("/report", &report.ReportController{})

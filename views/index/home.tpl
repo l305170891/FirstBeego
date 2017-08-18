@@ -1,9 +1,9 @@
 {{template "layout/base.tpl" .}}
 
 {{define "title"}}
-    home
+    首页
 {{end}}
 
 {{define "body"}}
-内容1
+首页
 {{end}}

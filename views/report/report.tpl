@@ -1,7 +1,7 @@
 {{template "layout/base.tpl" .}}
 
 {{define "title"}}
-    home
+报表
 {{end}}
 
 {{define "body"}}

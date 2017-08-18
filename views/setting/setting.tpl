@@ -1,7 +1,7 @@
 {{template "layout/base.tpl" .}}
 
 {{define "title"}}
-    home
+设置
 {{end}}
 
 {{define "body"}}
