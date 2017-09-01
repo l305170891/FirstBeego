@@ -7,8 +7,8 @@ import (
 
 type BaseModel struct {
     Uuid string `orm:"pk"`
-    CreateDate int `orm:"column(createDate)"`
-    UpdateDate int `orm:"column(updateDate)"`
+    CreateDate int64 `orm:"column(createDate)"`
+    UpdateDate int64 `orm:"column(updateDate)"`
     Enable int
 }
 

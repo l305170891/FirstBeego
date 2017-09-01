@@ -24,6 +24,7 @@ func init() {
 	//customer
 	beego.Router("/customer", &customer.CustomerController{})
 	beego.Router("/addCustomer", &customer.CustomerController{}, "get:AddCustomer")
+	beego.Router("/ajaxAddCustomer", &customer.CustomerController{}, "post:AjaxAddCustomer")
 
 	//report
 	beego.Router("/report", &report.ReportController{})
